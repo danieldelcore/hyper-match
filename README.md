@@ -1,4 +1,4 @@
-# Hyper Triggers
+# Hyper Match
 
 An extension for [Hyper](https://hyper.is) that automatically links patterns such as urls, emails and file paths to preconfigured commands. Inspired by iterm's Smart Trigger functionality.
 
@@ -6,7 +6,7 @@ This plugin is based on [hyperlinks](https://github.com/zeit/hyperlinks).
 
 ## Usage
 
-[Install Hyper](https://hyper.is/#installation) and add `hyper-triggers` to `plugins` in `~/.hyper.js`.
+[Install Hyper](https://hyper.is/#installation) and add `hyper-match` to `plugins` in `~/.hyper.js`.
 
 ### Customizing styles
 
@@ -29,7 +29,7 @@ termCSS: `
 A trigger has the following properties:
 - **name:** Unique identifier for a trigger
 - **pattern:** A regular expression
-- **strategy:** A command to be executed when a link is clicked. `hyper-triggers` uses [`.replace()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) under the hood to output parameters into the supplied strategy.
+- **strategy:** A command to be executed when a link is clicked. `hyper-match` uses [`.replace()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) under the hood to output parameters into the supplied strategy.
     - `$&`: Inserts the matched substring.
     - `$`: Inserts the portion of the string that precedes the matched substring.
     - `$'`: Inserts the portion of the string that follows the matched substring.
@@ -43,7 +43,7 @@ module.exports = {
   ...
   config: {
     ...
-    'hyper-triggers': {
+    'hyper-match': {
         triggers: [
             {
                 name: 'date',

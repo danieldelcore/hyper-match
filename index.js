@@ -43,7 +43,7 @@ exports.decorateTerm = function(Term, { React }) {
                 this.props.onTerminal(term);
             }
 
-            const userConfig = window.config.getConfig()['hyper-triggers'];
+            const userConfig = window.config.getConfig()['hyper-match'];
 
             this.config = Object.assign(DEFAULT_CONFIG, this.config);
             this.config.triggers = this.mergeTriggersById(

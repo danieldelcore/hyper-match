@@ -1,8 +1,8 @@
 # Hyper Match
 
-An extension for [Hyper](https://hyper.is) that automatically links patterns such as urls, emails and file paths to preconfigured commands. Inspired by iterm's Smart Trigger functionality.
+An extension for [Hyper](https://hyper.is) that automatically links patterns such as urls, emails and file paths to preconfigured commands. Inspired by iterm's Triggers functionality.
 
-This plugin is based on [hyperlinks](https://github.com/zeit/hyperlinks).
+Based on [hyperlinks](https://github.com/zeit/hyperlinks).
 
 ## Usage
 

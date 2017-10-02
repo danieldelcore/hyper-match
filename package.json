@@ -1,7 +1,15 @@
 {
   "name": "hyper-match",
   "version": "0.1.1",
-  "description": "",
+  "description": "HyperTerm extension which matches regular expressions with predefined commands",
+  "keywords": [
+    "hyper.app",
+    "hyper",
+    "hyperlinks",
+    "hyperterm",
+    "plugin",
+    "regex"
+  ],
   "main": "index.js",
   "repository": {
     "type": "git",

@@ -4,6 +4,8 @@ An extension for [Hyper](https://hyper.is) that automatically links patterns suc
 
 Based on [hyperlinks](https://github.com/zeit/hyperlinks).
 
+![Demo](assets/demo.gif)
+
 ## Usage
 
 [Install Hyper](https://hyper.is/#installation) and add `hyper-match` to `plugins` in `~/.hyper.js`.

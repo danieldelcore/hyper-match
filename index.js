@@ -1,9 +1,6 @@
 const escapeHTML = require('escape-html');
 const { exec } = require('child_process');
-const {
-    findMatches,
-    getMatchOverlaps,
-} = require('./lib/matcher');
+const { findMatches, getMatchOverlaps } = require('./lib/matcher');
 
 const DEFAULT_CONFIG = {
     triggers: [
@@ -49,7 +46,10 @@ exports.decorateTerm = function(Term, { React }) {
             const userConfig = window.config.getConfig()['hyper-triggers'];
 
             this.config = Object.assign(DEFAULT_CONFIG, this.config);
-            this.config.triggers = this.mergeTriggersById(DEFAULT_CONFIG.triggers, userConfig.triggers);
+            this.config.triggers = this.mergeTriggersById(
+                DEFAULT_CONFIG.triggers,
+                userConfig.triggers,
+            );
             this.term = term;
 
             const { screen_, onTerminalReady } = term;
@@ -93,13 +93,19 @@ exports.decorateTerm = function(Term, { React }) {
             return defaultTriggers
                 .map(defaultTrigger => {
                     let trigger = defaultTrigger;
-                    const foundTrigger = userTriggers
-                        .find(userTrigger => userTrigger.name === defaultTrigger.name);
+                    const foundTrigger = userTriggers.find(
+                        userTrigger => userTrigger.name === defaultTrigger.name,
+                    );
 
                     if (foundTrigger) {
-                        uniqueTriggers = uniqueTriggers
-                            .filter(trigger => trigger.name !== foundTrigger.name);
-                        trigger = Object.assign({}, defaultTrigger, foundTrigger);
+                        uniqueTriggers = uniqueTriggers.filter(
+                            trigger => trigger.name !== foundTrigger.name,
+                        );
+                        trigger = Object.assign(
+                            {},
+                            defaultTrigger,
+                            foundTrigger,
+                        );
                         trigger.pattern = foundTrigger.pattern;
                     }
 
@@ -140,21 +146,24 @@ exports.decorateTerm = function(Term, { React }) {
 
             const { innerText } = e.target;
             const name = e.target.getAttribute('data-trigger');
-            const trigger = this.config.triggers.find(trigger => trigger.name === name);
+            const trigger = this.config.triggers.find(
+                trigger => trigger.name === name,
+            );
 
             if (trigger) {
-                const command = this.mapStrategy(innerText, trigger.strategy, trigger.options, trigger.pattern);
+                const command = this.mapStrategy(
+                    innerText,
+                    trigger.strategy,
+                    trigger.options,
+                    trigger.pattern,
+                );
                 exec(command);
             }
         }
 
         mapStrategy(text, strategy, options, pattern) {
             const re = new RegExp(pattern, options);
-
-            return text
-                .replace(re, strategy)
-                .replace('$dirname', __dirname)
-                .replace('$filename', __filename);
+            return text.replace(re, strategy);
         }
 
         autolink(screen) {
@@ -162,7 +171,10 @@ exports.decorateTerm = function(Term, { React }) {
                 // replace text node to element
                 const cursorNode = document.createElement('span');
                 cursorNode.textContent = screen.cursorNode_.textContent;
-                screen.cursorRowNode_.replaceChild(cursorNode, screen.cursorNode_);
+                screen.cursorRowNode_.replaceChild(
+                    cursorNode,
+                    screen.cursorNode_,
+                );
                 screen.cursorNode_ = cursorNode;
             }
 
@@ -177,8 +189,9 @@ exports.decorateTerm = function(Term, { React }) {
             }
 
             const textContent = rows.map(r => r.lastChild.textContent).join('');
-            const matches = this.getMatches(textContent)
-                .map(match => Object.assign(match, { id: this.id++ }));
+            const matches = this.getMatches(textContent).map(match =>
+                Object.assign(match, { id: this.id++ }),
+            );
 
             if (!matches || matches.length === 0) {
                 return;
@@ -196,17 +209,13 @@ exports.decorateTerm = function(Term, { React }) {
                 let html = '';
 
                 while (matches[index]) {
-                    const {
-                        id,
-                        name,
-                        linkColor,
-                        start,
-                        end,
-                    } = matches[index];
+                    const { id, name, linkColor, start, end } = matches[index];
 
                     if (start > textStart) {
                         const textEnd = start < rowEnd ? start : rowEnd;
-                        html += escapeHTML(textContent.slice(textStart, textEnd));
+                        html += escapeHTML(
+                            textContent.slice(textStart, textEnd),
+                        );
                     }
 
                     if (start < rowEnd) {
@@ -239,44 +248,44 @@ exports.decorateTerm = function(Term, { React }) {
 
         getMatches(textContent) {
             const { triggers } = this.config;
-            const matches = triggers
-                .reduce((sum, {
-                    name,
-                    priority,
-                    pattern,
-                    options,
-                    linkColor,
-                }) => {
-                    const matches = findMatches(textContent, pattern, options)
-                        .map(({ text, start, end }) => ({
-                            name,
-                            priority,
-                            linkColor,
-                            text,
-                            start,
-                            end,
-                        }));
+            const matches = triggers.reduce(
+                (sum, { name, priority, pattern, options, linkColor }) => {
+                    const matches = findMatches(
+                        textContent,
+                        pattern,
+                        options,
+                    ).map(({ text, start, end }) => ({
+                        name,
+                        priority,
+                        linkColor,
+                        text,
+                        start,
+                        end,
+                    }));
 
                     return sum.concat(matches);
-                }, []);
+                },
+                [],
+            );
 
             return this.filterOverlaps(matches);
         }
 
         filterOverlaps(matches) {
-            const overlaps = getMatchOverlaps(matches)
-                .map(({ previous, current }) =>
-                    (previous.priority >= current.priority) ? current : previous);
+            const overlaps = getMatchOverlaps(matches).map(
+                ({ previous, current }) =>
+                    previous.priority >= current.priority ? current : previous,
+            );
 
-            return matches.filter(match =>
-                !overlaps.find(overlap => Object.is(match, overlap))
+            return matches.filter(
+                match => !overlaps.find(overlap => Object.is(match, overlap)),
             );
         }
 
         render() {
             const props = Object.assign({}, this.props, {
                 onTerminal: this.onTerminal,
-                customCSS: styles + (this.props.customCSS || '')
+                customCSS: styles + (this.props.customCSS || ''),
             });
 
             return React.createElement(Term, props);

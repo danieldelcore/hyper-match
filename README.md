@@ -41,7 +41,7 @@ A trigger has the following properties:
 - **priority:** Defines the weight of a pattern and is used if the pattern conflicts with another
 - **linkColor:** A CSS color
 
-**Example: **
+**Example:**
 
 ``` javascript
 module.exports = {

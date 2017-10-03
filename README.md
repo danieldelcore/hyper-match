@@ -1,7 +1,8 @@
 # Hyper Match
 
-An extension for [Hyper](https://hyper.is) that automatically links patterns such as urls, emails and file paths to preconfigured commands. Inspired by iterm's Triggers functionality.
+An extension for [Hyper](https://hyper.is) that binds triggers to string patterns such as urls, emails and file paths.
 
+Inspired by [iterm's Triggers](https://www.iterm2.com/documentation-triggers.html).
 Based on [hyperlinks](https://github.com/zeit/hyperlinks).
 
 ![Demo](assets/demo.gif)
@@ -39,6 +40,8 @@ A trigger has the following properties:
 - **options:** Regular expression options
 - **priority:** Defines the weight of a pattern and is used if the pattern conflicts with another
 - **linkColor:** A CSS color
+
+**Example: **
 
 ``` javascript
 module.exports = {

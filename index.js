@@ -47,7 +47,7 @@ exports.decorateTerm = function(Term, { React }) {
 
             this.config = Object.assign(DEFAULT_CONFIG, this.config);
 
-            if (userConfig.triggers) {
+            if (userConfig && userConfig.triggers) {
                 this.config.triggers = this.mergeTriggersById(
                     DEFAULT_CONFIG.triggers,
                     userConfig.triggers,

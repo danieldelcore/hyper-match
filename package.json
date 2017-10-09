@@ -1,6 +1,6 @@
 {
   "name": "hyper-match",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "HyperTerm extension which matches regular expressions with predefined commands",
   "keywords": [
     "hyper.app",

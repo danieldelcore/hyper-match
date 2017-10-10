@@ -2,7 +2,7 @@
 
 An extension for [Hyper](https://hyper.is) that binds commands to patterns detected in the terminal. When a pattern is detected, it is rendered as a hyperlink which will execute your command on click. 
 
-Patterns such as urls, email addresses and file paths can be configured to open a browser, email client, or file manager. 
+Patterns such as urls, email addresses and file paths can be configured to do anything when clicked, for example: open a browser, email client, or file manager. 
 
 Inspired by [iterm's Triggers](https://www.iterm2.com/documentation-triggers.html).
 Based on [hyperlinks](https://github.com/zeit/hyperlinks).

@@ -1,5 +1,8 @@
 # Hyper Match
 
+[![Mentioned in Awesome Hyper](https://awesome.re/mentioned-badge.svg)](https://github.com/bnb/awesome-hyper)
+[![npm](https://img.shields.io/npm/dm/hyper-match.svg?label=DL)](https://www.npmjs.com/package/hyper-match)
+
 An extension for [Hyper](https://hyper.is) that binds commands to patterns detected in the terminal. When a pattern is detected, it is rendered as a hyperlink which will execute your command on click. 
 
 Patterns such as urls, email addresses and file paths can be configured to do anything when clicked, for example: open a browser, email client, or file manager. 

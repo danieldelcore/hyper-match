@@ -1,10 +1,10 @@
 # Hyper Match
 
-[![Mentioned in Awesome Hyper](https://awesome.re/mentioned-badge.svg)](https://github.com/bnb/awesome-hyper)
-[![npm](https://img.shields.io/npm/dm/hyper-match.svg?label=DL)](https://www.npmjs.com/package/hyper-match)
-
 ## WARNING: THIS PROJECT IS DEPRECATED
 Hyper v2 now uses [xterm.js](https://github.com/xtermjs/xterm.js) which supports link detection out of the box.
+
+[![Mentioned in Awesome Hyper](https://awesome.re/mentioned-badge.svg)](https://github.com/bnb/awesome-hyper)
+[![npm](https://img.shields.io/npm/dm/hyper-match.svg?label=DL)](https://www.npmjs.com/package/hyper-match)
 
 An extension for [Hyper](https://hyper.is) that binds commands to patterns detected in the terminal. When a pattern is detected, it is rendered as a hyperlink which will execute your command on click. 
 
